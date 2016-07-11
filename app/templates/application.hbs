@@ -4,10 +4,19 @@
 
 <p>this is header, will be shown on every page</p>
 
-{{link-to 'Home' 'application'}}
+<nav>
+{{#if session.isAuthenticated}}
 
-{{#link-to 'login'}}Login{{/link-to}}
+  {{link-to 'Home' 'application'}}
+  {{link-to 'Dashboard' 'dashboard'}}
+  <a href="#" {{action 'logout'}}>Logout</a>
+  
+{{else}}
 
-{{link-to 'Dashboard' 'dashboard'}}
+  {{link-to 'Home' 'application'}}
+  {{#link-to 'login'}}Login{{/link-to}}
+  
+{{/if}}
+</nav>
 
 {{outlet}}
