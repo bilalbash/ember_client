@@ -10,6 +10,9 @@ export default Ember.Route.extend({
       newCompanyRequest.save().then(() => {
         this.flash.success('Successfully created company!', 5000);
         this.transitionTo('/');
+      }, (error) => {
+      	this.flash.success('Please review the errors below', 5000);
+      	console.log(error);
       });
     },
     cancel() {
