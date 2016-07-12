@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
 
   actions: {
     logout() {
+      this.flash.success('Successfully logged out!', 5000);
       this.get('session').invalidate();
     }
   }

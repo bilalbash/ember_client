@@ -9,6 +9,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   actions: {
     logout() {
+      this.flash.success('Successfully logged out!', 5000);
       this.get('session').invalidate();
     }
   }
