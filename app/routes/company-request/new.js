@@ -11,8 +11,11 @@ export default Ember.Route.extend({
         this.flash.success('Successfully created company!', 5000);
         this.transitionTo('/');
       }, (error) => {
-      	this.flash.success('Please review the errors below', 5000);
-      	console.log(error);
+        var mesg = '';
+        for (var i = 0; i < error.errors.get('length') ; i++){
+          mesg = mesg + " \n" + (i+1) + " " + error.errors[i]["detail"];
+        }
+        this.flash.failure('Please review the errors below:' + mesg, 5000);
       });
     },
     cancel() {
