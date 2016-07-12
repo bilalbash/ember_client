@@ -16,5 +16,6 @@ test('it renders', function(assert) {
       template block text
     {{/login-form}}
   `);
-  assert.equal(this.$().find('[for="identification"]').text(), "Login");
+
+  assert.equal(this.$().find('[type="submit"]').text(), "Login");
 });

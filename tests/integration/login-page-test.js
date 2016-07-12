@@ -16,7 +16,7 @@ module('Integration - Login Page', {
 test('Should navigate to the Login page', function(assert) {
   visit('/').then(function() {
     click("a:contains('Login')").then(function() {
-      assert.equal(find('h2').text(), 'Login');
+      assert.equal(find('.panel-title').text(), 'Sign In');
     });
   });
 });
