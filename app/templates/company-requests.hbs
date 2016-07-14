@@ -1,0 +1,13 @@
+<p>company request index</p>
+<h3>company Index</h3>
+<ul>
+  {{#each model as |company|}}
+    <li>
+      {{#link-to 'company' company}}
+        {{company.email}}
+      {{/link-to}}
+      <button {{action 'delete' company}}>Delete</button>
+    </li>
+  {{/each}}
+</ul>
+
