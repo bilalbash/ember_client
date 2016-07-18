@@ -7,9 +7,9 @@ export default Ember.Route.extend({
 
   actions: {
     save() {
-      const newCompanyRequest = this.get('store').createRecord('company_request', this.currentModel);
+      const newLoginRequest = this.get('store').createRecord('login_request', this.currentModel);
 
-      newCompanyRequest.save().then(
+      newLoginRequest.save().then(
         () => {
           this.flash.success('Successfully created company!', 5000);
           this.transitionTo('/');

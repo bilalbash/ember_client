@@ -2,7 +2,7 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 
 export default Model.extend({
-  admin_name: attr('string'),
+  full_name: attr('string'),
   email: attr('string'),
-  name: attr('string')
+  company_id: attr('string')
 });

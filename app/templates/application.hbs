@@ -23,6 +23,7 @@
           <li>{{link-to 'Home' 'application'}}</li>
           <li>{{#link-to 'login'}}Login{{/link-to}}</li>
           <li>{{#link-to 'company_request.new'}}Join Us{{/link-to}}</li>
+          <li>{{#link-to 'login_request.new'}}Sign Up{{/link-to}}</li>
 
         {{/if}}
       </ul>
@@ -31,7 +32,11 @@
 </nav>
 
 <div class="container">
+  {{#if session.isAuthenticated}}
+    <p>session.authenticated.store.role</p>
+  {{/if}}
   <div class="alert alert-info">
+    <p><strong>Notifications:</strong></p>
     {{flash-message}}
   </div>
   {{outlet}}
