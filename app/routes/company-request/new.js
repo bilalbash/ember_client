@@ -4,20 +4,28 @@ export default Ember.Route.extend({
   model() {
     return {};
   },
+
   actions: {
     save() {
       const newCompanyRequest = this.get('store').createRecord('company_request', this.currentModel);
+
       newCompanyRequest.save().then(() => {
         this.flash.success('Successfully created company!', 5000);
         this.transitionTo('/');
+
       }, (error) => {
-        var mesg = '';
+        var mesg = '',
+            errorDiv = Ember.$('#errorDiv');
         for (var i = 0; i < error.errors.get('length') ; i++){
-          mesg = mesg + " \n" + (i+1) + " " + error.errors[i]["detail"];
+          mesg = mesg + "<p>" + error.errors[i]["detail"] + "</p>";
         }
-        this.flash.failure('Please review the errors below:' + mesg, 5000);
+        if (errorDiv.hasClass('hidden')){
+          errorDiv.removeClass('hidden');
+        }
+        errorDiv.html('').append(mesg);
       });
     },
+
     cancel() {
       this.transitionTo('company_requests');
     }
