@@ -23,7 +23,7 @@
             <li>{{link-to 'View Tickets' 'dashboard'}}</li>
 
           {{else if (eq session.session.content.authenticated.role 'admin')}}
-            <li>{{link-to 'Accept Company Request' 'dashboard'}}</li>
+            <li>{{link-to 'Accept Company Request' 'company_requests'}}</li>
             <li>{{link-to 'View Tickets' 'dashboard'}}</li>
 
           {{else if (eq session.session.content.authenticated.role 'agent')}}

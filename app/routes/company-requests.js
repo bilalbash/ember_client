@@ -6,6 +6,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model() {
     return this.get('store').findAll('company_request');
   },
+
   actions: {
     delete(company_request) {
       company_request.deleteRecord();
