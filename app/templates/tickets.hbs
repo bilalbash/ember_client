@@ -1,0 +1,65 @@
+<div class="text-center">
+  <h4 id="title">Tickets List</h4>
+</div>
+
+<div class="row">
+  {{#each model as |ticket|}}
+    <div class="text-center">
+      <div class="col-md-6 col-lg-4 col-sm-6 col-xs-12">
+        <div class="panel panel-success" style="max-height: 200px;height: 192px;">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{ticket.title}}</h3>
+          </div>
+
+          <div class="panel-body">
+            <p style="height: 39px; overflow: scroll;">{{ticket.description}}</p>
+            <a href="#" class="btn btn-primary btn-xs disabled" role="button">Status: {{ticket.status}}</a>
+            <a href="#" class="btn btn-warning btn-xs disabled" role="button">Type: {{ticket.ticket_type}}</a>
+          </div>
+
+          <div class="panel-footer">
+            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target=".bs-example-modal-sm-{{ticket.id}}">Details</button>
+            <!-- <button type="button" >Add Comment</button> -->
+            {{#link-to 'ticket.comment.new' ticket class="btn btn-default btn-sm"}}Add comment{{/link-to}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm-{{ticket.id}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{ticket.title}}</h4>
+          </div>
+
+          <div class="modal-body">
+            <p>{{ticket.description}}</p>
+            <a href="#" class="btn btn-primary btn-xs disabled" role="button">Status: {{ticket.status}}</a>
+            <a href="#" class="btn btn-warning btn-xs disabled" role="button">Type: {{ticket.ticket_type}}</a>
+            <h4>Comments</h4>
+
+            <div class="panel panel-primary">
+              <div class="panel-body">
+                <strong class="text-primary">Ahmad</strong>: this will be the comment. this will be the comment. this will be the comment.
+                this will be the comment. <em class="pull-right text-muted">July 30, 2016</em>
+              </div>
+            </div>
+
+            <div class="panel panel-primary">
+              <div class="panel-body">
+                <strong class="text-primary">Ahmad</strong>: this will be the comment. this will be the comment. this will be the comment.
+                this will be the comment. <em class="pull-right text-muted">July 30, 2016</em>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

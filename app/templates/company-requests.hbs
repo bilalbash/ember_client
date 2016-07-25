@@ -1,19 +1,20 @@
-
 <div class="text-center">
   <h4 id="title">Company Requests</h4>
-
 
   <div class="row">
     {{#each model as |company_request|}}
       <div class="col-md-6 col-lg-4 col-sm-6 col-xs-12">
         <div class="panel panel-success" style="max-height: 180px;height: 180px;">
+
           <div class="panel-heading">
             <h3 class="panel-title">{{company_request.name}}</h3>
           </div>
+
           <div class="panel-body">
             <p>Company Admin email address will be <mark>{{company_request.email}}</mark> and his full name will <mark>{{company_request.admin_name}}</mark>.</p>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-sm">Accept</button>
           </div>
+
         </div>
       </div>
     {{/each}}
@@ -23,13 +24,16 @@
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
+
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Alert!</h4>
       </div>
+
       <div class="modal-body">
       Sorry we support only few companies for now. We will hopefully incorporate this feature in our next release.
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>

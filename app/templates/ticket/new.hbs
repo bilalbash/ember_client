@@ -1,0 +1,45 @@
+<div class="text-center">
+  <h4 id="title">Create Ticket</h4>
+</div>
+
+<div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div style="padding-top:30px" class="panel-body" >
+      <div class="alert alert-info">You can create ticket here.</div>
+      <div id="errorDiv" class="alert alert-danger hidden"></div>
+      <form class="form-horizontal">
+        <div style="margin-bottom: 25px" class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+          {{input type="text" value=model.title placeholder="Enter your ticket title here" class="form-control"}}
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Description</label>
+          <div class="col-sm-8">
+            {{textarea value=model.description placeholder="Describe your ticket" class="form-control" row='3'}}
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 25px">
+          <label class="col-sm-4 control-label">Select ticket type</label>
+          <div class="col-sm-8">
+            {{#x-select value=model.ticket_type class="form-control"}}
+              {{#x-option value='system'}}System{{/x-option}}
+              {{#x-option value='accounts'}}Accounts{{/x-option}}
+              {{#x-option value='sales'}}Sales{{/x-option}}
+              {{#x-option value='issue_tracking'}}Issue tracking{{/x-option}}
+            {{/x-select}}
+          </div>
+        </div>
+
+        <div style="margin-top:10px" class="form-group">
+          <div class="col-sm-12 controls">
+            <button {{action 'save'}} class="btn btn-success">Save</button>
+            <button {{action 'cancel'}} class="btn btn-warning">Cancel</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

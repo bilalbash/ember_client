@@ -6,7 +6,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-
   this.route('login');
   this.route('dashboard');
 
@@ -18,6 +17,11 @@ Router.map(function() {
   this.route('login_request.new', { path: 'login_requests/new' });
   this.resource('login_request', { path: 'login_requests/:login_request_id' });
 
+  this.route('tickets');
+  this.route('ticket.new', { path: 'tickets/new' });
+  this.resource('ticket', { path: 'tickets/:ticket_id' }, function() {
+    this.route('comment.new', { path: 'comments/new' });
+  });
 });
 
 export default Router;

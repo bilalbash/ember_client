@@ -1,0 +1,28 @@
+<div class="text-center">
+  <h4 id="title">Create Comment</h4>
+</div>
+
+<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div style="padding-top:30px" class="panel-body" >
+      <div id="errorDiv" class="alert alert-danger hidden"></div>
+      <form class="form-horizontal">
+
+        <div class="form-group" style="margin-bottom: 25px">
+          <label class="col-sm-4 control-label">Comment</label>
+          <div class="col-sm-8">
+            {{textarea value=model.description placeholder="Comment here" class="form-control" row='3'}}
+          </div>
+        </div>
+
+        <div style="margin-top:10px" class="form-group">
+          <div class="col-sm-12 controls">
+            <button {{action 'save'}} class="btn btn-success">Save</button>
+            <button {{action 'cancel'}} class="btn btn-warning">Cancel</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

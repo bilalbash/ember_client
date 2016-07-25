@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -18,22 +17,22 @@
         {{#if session.isAuthenticated}}
           <li>{{link-to 'Dashboard' 'dashboard'}}</li>
 
-          {{#if (eq session.session.content.authenticated.role 'client')}}
-            <li>{{link-to 'Create Ticket' 'dashboard'}}</li>
-            <li>{{link-to 'View Tickets' 'dashboard'}}</li>
+          {{#if (eq session.data.authenticated.role 'client')}}
+            <li>{{link-to 'Create Ticket' 'ticket.new'}}</li>
+            <li>{{link-to 'View Tickets' 'tickets'}}</li>
 
-          {{else if (eq session.session.content.authenticated.role 'admin')}}
+          {{else if (eq session.data.authenticated.role 'admin')}}
             <li>{{link-to 'Accept Company Request' 'company_requests'}}</li>
-            <li>{{link-to 'View Tickets' 'dashboard'}}</li>
+            <li>{{link-to 'View Tickets' 'tickets'}}</li>
 
-          {{else if (eq session.session.content.authenticated.role 'agent')}}
+          {{else if (eq session.data.authenticated.role 'agent')}}
             <li>{{link-to 'Accept User Request' 'dashboard'}}</li>
-            <li>{{link-to 'View My Tickets' 'dashboard'}}</li>
+            <li>{{link-to 'View My Tickets' 'tickets'}}</li>
 
-          {{else if (eq session.session.content.authenticated.role 'company_admin')}}
+          {{else if (eq session.data.authenticated.role 'company_admin')}}
             <li>{{link-to 'Create Agent' 'dashboard'}}</li>
             <li>{{link-to 'Accept User Request' 'dashboard'}}</li>
-            <li>{{link-to 'View Tickets' 'dashboard'}}</li>
+            <li>{{link-to 'View Tickets' 'tickets'}}</li>
           {{/if}}
           <li><a href="#" {{action 'logout'}}>Logout</a></li>
 
@@ -49,11 +48,13 @@
 </nav>
 
 <div class="container">
+
   <div class="alert alert-info">
     <p><strong>Notifications:</strong></p>
     <p>
       {{#if session.isAuthenticated}}
-        Welcome {{session.session.content.authenticated.full_name}}! Your role is "{{session.session.content.authenticated.role}}"
+        Welcome {{session.data.authenticated.full_name}}! Your role is "{{session.data.authenticated.role}}"
+        <div class="hidden" id='userInfo' data-email='{{session.data.authenticated.email}}' data-token="{{session.data.authenticated.token}}"></div>
       {{/if}}
     </p>
     <p>{{flash-message}}</p>
