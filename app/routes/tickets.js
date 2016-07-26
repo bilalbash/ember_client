@@ -24,14 +24,16 @@ export default Ember.Route.extend({
 
       }).done(function(msg) {
         var result = '';
-        // TODO: complete the feature when no comment recieves
-        // console.log( Object.keys(msg).length);
-        // console.log(msg.length);
-        Ember.$.each(msg, function(key, value){
-          var d = new Date(value.created_at);
-          result = result + '<div class="panel panel-primary"><div class="panel-body"><strong class="text-primary">' + value.name + '</strong>: ' + value.description + '<em class="pull-right text-muted">' + d.toDateString() + '</em></div></div>';
-        });
-        Ember.$('.comments' + ticket.id).html('').html(result);
+        if (Object.keys(msg).length === 0){
+          Ember.$('.comments' + ticket.id).html('').html('<p>No comments for this ticket so far.</p>');
+        } else {
+          Ember.$.each(msg, function(key, value){
+            var d = new Date(value.created_at);
+            result = result + '<div class="panel panel-primary"><div class="panel-body"><strong class="text-primary">' + value.name + '</strong>: ' + value.description + '<em class="pull-right text-muted">' + d.toDateString() + '</em></div></div>';
+          });
+          Ember.$('.comments' + ticket.id).html('').html(result);
+        }
+        
 
       }).fail(function() {
         // (jqXHR , textStatus) should be accessible via parameters

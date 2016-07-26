@@ -16,6 +16,7 @@ export default Ember.Route.extend({
       newComment.set('ticket', ticket);
       newComment.save().then(
         () => {
+          this.flash.success('You\'ve successfully created a comment.', 5000);
           this.transitionTo('tickets');
         }, (error) => {
           var mesg = '<p>Please review the following:</p><ul style="padding-top:3px;">',
