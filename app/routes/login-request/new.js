@@ -11,7 +11,9 @@ export default Ember.Route.extend({
 
       newLoginRequest.save().then(
         () => {
-          this.flash.success('Successfully created company!', 5000);
+          this.flash.success('Your request for the sign up has been made successfully. Our administrator ' +
+          'will let you know by email for your account activation. Keep visiting your inbox :) Thank you ' +
+          'for trusting our services', 5000);
           this.transitionTo('/');
 
         }, (error) => {

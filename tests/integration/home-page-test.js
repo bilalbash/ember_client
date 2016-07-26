@@ -15,14 +15,14 @@ module('Integration - Home Page', {
 
 test('Should display langing page or home page', function(assert) {
   visit('/').then(function() {
-    assert.equal(find('h2#title').text(), 'Home');
+    assert.equal(find('h4#title').text(), 'Home');
   });
 });
 
 test('Should allow navigating back to home from login page', function(assert) {
   visit('/login').then(function() {
     click('a:contains("Home")').then(function() {
-      assert.notEqual(find('h2').text(), 'About');
+      assert.notEqual(find('h4').text(), 'Login');
     });
   });
 });

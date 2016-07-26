@@ -1,23 +1,25 @@
 import Ember from 'ember';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend({
+const { service } = Ember.inject;
+
+export default Ember.Route.extend(AuthenticatedRouteMixin, {
+  session: service('session'),
+
   model() {
     return {};
   },
 
-  renderTemplate() {
-    this.render('ticket.comment.new', { into: 'application' });
-  },
-
   actions: {
     save() {
-      const ticket = this.modelFor('ticket');
-      const newComment = this.get('store').createRecord('comment', this.currentModel);
-      newComment.set('ticket', ticket);
-      newComment.save().then(
+      const newUser = this.get('store').createRecord('user', this.currentModel);
+      newUser.save().then(
         () => {
-          this.transitionTo('tickets');
-        }, (error) => {
+          this.flash.success('You\'ve successfully created an agent for your company!', 5000);
+          this.transitionTo("/");
+        },
+
+        (error) => {
           var mesg = '<p>Please review the following:</p><ul style="padding-top:3px;">',
               errorDiv = Ember.$('#errorDiv');
           for (var i = 0; i < error.errors.get('length') ; i++){
@@ -32,7 +34,7 @@ export default Ember.Route.extend({
     },
 
     cancel() {
-      this.transitionTo('tickets');
+      this.transitionTo("/");
     }
   }
 });

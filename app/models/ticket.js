@@ -7,5 +7,5 @@ export default Model.extend({
   ticket_type: attr('string'),
   status: attr('string'),
   description: attr('string'),
-  comments: DS.hasMany('comment')
+  comments: hasMany('comment')
 });

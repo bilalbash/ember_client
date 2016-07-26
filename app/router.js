@@ -19,9 +19,14 @@ Router.map(function() {
 
   this.route('tickets');
   this.route('ticket.new', { path: 'tickets/new' });
+  this.route('ticket.assign', { path: 'tickets/assign' });
   this.resource('ticket', { path: 'tickets/:ticket_id' }, function() {
     this.route('comment.new', { path: 'comments/new' });
   });
+
+  this.route('users');
+  this.route('user.new', { path: 'users/new' });
+  this.resource('user', { path: 'users/:user_id' });
 });
 
 export default Router;

@@ -1,0 +1,31 @@
+<div class="text-center">
+  <h4 id="title">Create Agent</h4>
+</div>
+
+<div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div style="padding-top:30px" class="panel-body" >
+      <div class="alert alert-info">You can create agent for your company here.</div>
+      <div id="errorDiv" class="alert alert-danger hidden"></div>
+      <form class="form-horizontal">
+        <div style="margin-bottom: 25px" class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          {{input type="text" value=model.full_name placeholder="Enter your full name" class="form-control"}}
+        </div>
+
+        <div style="margin-bottom: 25px" class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+          {{input type="text" value=model.email placeholder="Enter your email address" class="form-control"}}
+        </div>
+
+        <div style="margin-top:10px" class="form-group">
+          <div class="col-sm-12 controls">
+            <button {{action 'save'}} class="btn btn-success">Save</button>
+            <button {{action 'cancel'}} class="btn btn-warning">Cancel</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
